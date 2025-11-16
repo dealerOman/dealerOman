@@ -1,0 +1,133 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DealerOman - Home</title>
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+    <!--External css file-->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!--the header and navigation bar-->
+<header>
+    <div class="container-fluid bg-dark text-white">
+        <div class="row">
+            <div class="col-sm-3">
+                <img src="Logo.png" alt="DealerOman logo" width="120" height="120">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" >Home</a></li>
+                    <li><a href="categories.html" >Categories</a></li>
+                    <li><a href="freelancers.html" class="active">Freelancers</a></li>
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="contact.html">Contact us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<div class="container main-content">
+    <h2>Featured Freelancers</h2>
+    <p>Example table of services offered through DealerOman.</p>
+<div class="table-box mb-4">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Skill</th>
+                <th>City</th>
+                <th>Rate (OMR/hr)</th>
+                <th>Mobile Number</th>
+            </tr>
+            <tr>
+                <td>Omar Al-Zadjali</td>
+                <td>Graphic Design</td>
+                <td>Muscat</td>
+                <td>8</td>
+                <td>+968 9999 1111</td>
+            </tr>
+            <tr>
+                <td>Ali Al-Ajmi</td>
+                <td>Car Photography</td>
+                <td>Sohar</td>
+                <td>10</td>
+                <td>+968 7777 2222</td>
+            </tr>
+            <tr>
+                <td>Mohammed Al-Lawati</td>
+                <td>Website designer</td>
+                <td>Muscat</td>
+                <td>18</td>
+                <td>+968 7711 2233</td>
+            </tr>
+        </table>
+    </div>
+
+    <h2 class="section-title mb-3">Freelancer Registration</h2>
+
+
+    <form action="" method="get">
+
+        <div class="row mb-3">
+            <div class="col-sm-3"><label for="fname">Full Name</label></div>
+            <div class="col-sm-9"><input type="text" id="fname" name="full_name" class="form-control"></div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-sm-3"><label for="fmail">Email</label></div>
+            <div class="col-sm-9"><input type="email" id="fmail" name="email" class="form-control"></div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-sm-3"><label for="phone">Mobile Number</label></div>
+            <div class="col-sm-9"><input type="tel" id="phone" name="mobile" class="form-control"></div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-sm-3"><label for="skill">Skill</label></div>
+            <div class="col-sm-9">
+                <select id="skill" name="skill" class="form-control">
+                    <option value="design">Graphic Design</option>
+                    <option value="marketing">Digital Marketing</option>
+                    <option value="carcare">Car Care</option>
+                    <option value="photography">Photography</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-sm-3"><label>Availability</label></div>
+            <div class="col-sm-9">
+                <label><input type="checkbox" value="weekdays" name="a1"> Weekdays</label><br>
+                <label><input type="checkbox" value="weekends" name="a2"> Weekends</label>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-sm-3"><label for="frate">Rate (OMR/hr)</label></div>
+            <div class="col-sm-9"><input type="number" id="frate" name="rate" class="form-control"></div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-sm-3"><label for="fbio">Bio</label></div>
+            <div class="col-sm-9"><textarea id="fbio" name="bio" rows="4" class="form-control"></textarea></div>
+        </div>
+
+        <input type="submit" value="Submit Freelancer" class="btn btn-danger">
+
+    </form>
+
+</div>
+
+<footer class="bg-dark text-white mt-3">
+    <div class="container">
+        <p id="footer-text" class="center-text">© 2025 DealerOman - Sultan Qaboos University project</p>
+    </div>
+</footer>
+
+
+
+</body>
+</html>

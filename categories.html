@@ -1,0 +1,176 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DealerOman - Home</title>
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+    <!--External css file-->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!--the header and navigation bar-->
+<header>
+    <div class="container-fluid bg-dark text-white">
+        <div class="row">
+            <div class="col-sm-3">
+                <img src="Logo.png" alt="DealerOman logo" width="120" height="120">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" >Home</a></li>
+                    <li><a href="categories.html" class="active">Categories</a></li>
+                    <li><a href="freelancers.html">Freelancers</a></li>
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="contact.html">Contact us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<div class="container main-content">
+    <!--sample ADs-->
+  <div class="row page-section">
+    <div class="col-sm-12">
+      <h2 class="section-title highlight">Popular listings</h2>
+      <p>These are examples of advertisements shown using card design.</p>
+
+      <div class="cards-container">
+
+        <div class="card-box">
+            <img src="CarForSale.png" alr="Car" style="width:250px; height:150px; object-fit:cover; float:right; 
+            margin-left:10px; border-radius:4px;">
+          <h3>Vehicles</h3>
+          <p><b>Model:</b> Ford Mustang</p>
+          <p><b>Year:</b> 2018</p>
+          <p><b>Location:</b> Muscat</p>
+          <p><b>Price:</b> 8,000 OMR</p>
+        </div>
+
+        <div class="card-box">
+          <img src="laptopForSale.jpg" alr="Laptop" style="width:250px; height:150px; object-fit:cover; float:right; 
+            margin-left:10px; border-radius:4px;">  
+          <h3>Electronics</h3>
+          <p><b>Item:</b> Gaming Laptop</p>
+          <p><b>Type:</b> RTX 4060</p>
+          <p><b>Location:</b> Sohar</p>
+          <p><b>Price:</b> 350 OMR</p>
+        </div>
+
+        <div class="card-box">
+            <img src="VillaRent.png" alr="Villa" style="width:250px; height:150px; object-fit:cover; float:right; 
+            margin-left:10px; border-radius:4px;">
+          <h3>Properties</h3>
+          <p><b>Name:</b> 4-bedroom Apartment</p>
+          <p><b>Area:</b> Al Khoud</p>
+          <p><b>Location:</b> Muscat</p>
+          <p><b>Price:</b> 700 OMR / month</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="row page-section">
+    <div class="row mb-3">
+    <div class="col-sm-3">
+      <label for="make">Item type</label>
+    </div>
+    <div class="col-sm-9">
+      <select id="make" name="item_type" class="form-control">
+        <option value="Vehicle">Vehicle</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Property">Property</option>
+        <option value="Pet">Pet</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-sm-3">
+      <label for="itemname">Name / Model</label>
+    </div>
+    <div class="col-sm-9">
+      <input type="text" id="itemname" name="item_name" class="form-control">
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-sm-3">
+      <label for="year">Year (optional)</label>
+    </div>
+    <div class="col-sm-9">
+      <input type="number" id="year" name="year" class="form-control">
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-sm-3">
+      <label for="price">Price (OMR)</label>
+    </div>
+    <div class="col-sm-9">
+      <input type="number" id="price" name="price" class="form-control">
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-sm-3">
+      <label for="city">Location</label>
+    </div>
+    <div class="col-sm-9">
+      <select id="city" name="location" class="form-control">
+        <option>Muscat</option>
+        <option>Sohar</option>
+        <option>Nizwa</option>
+        <option>Salalah</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-sm-3">
+      <label>Condition</label>
+    </div>
+    <div class="col-sm-9">
+      <label><input type="radio" name="condition" value="New"> New</label>
+      <label class="ms-3"><input type="radio" name="condition" value="Used" checked> Used</label>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-9">
+      <label><input type="checkbox" name="negotiable" value="yes"> Price is negotiable</label>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-sm-3">
+      <label for="details">Details</label>
+    </div>
+    <div class="col-sm-9">
+      <textarea id="details" name="details" class="form-control" rows="4"></textarea>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <input type="submit" class="btn btn-danger" value="Submit Listing">
+    </div>
+  </div>
+
+      </form>
+
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  © 2025 DealerOman - Sultan Qaboos University Project
+</footer>
+</body>
+</html>

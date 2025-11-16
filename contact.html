@@ -1,0 +1,103 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DealerOman - Home</title>
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+    <!--External css file-->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!--the header and navigation bar-->
+<header>
+    <div class="container-fluid bg-dark text-white">
+        <div class="row">
+            <div class="col-sm-3">
+                <img src="Logo.png" alt="DealerOman logo" width="120" height="120">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" >Home</a></li>
+                    <li><a href="categories.html" >Categories</a></li>
+                    <li><a href="freelancers.html" >Freelancers</a></li>
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="contact.html"  class="active">Contact us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<div class="container main-content">
+
+    <h2 class="highlight mt-4 mb-3">Contact the DealerOman team</h2>
+
+    <p>You can send us a message using this form or email us directly at one of the following:</p>
+
+<div class="table-box">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+        <tr>
+            <td>Talal Al-Tobi</td>
+            <td><a href="mailto:s144063@student.squ.edu.om">s144063@student.squ.edu.om</a></td>
+        </tr>
+        <tr>
+            <td>Abdulaziz Al-Hatmi</td>
+            <td><a href="mailto:s144003@student.squ.edu.om">s144003@student.squ.edu.om</a></td>
+        </tr>
+        <tr>
+            <td>Osama Al-Riyami</td>
+            <td><a href="mailto:s143831@student.squ.edu.om">s143831@student.squ.edu.om</a></td>
+        </tr>
+    </table>
+</div>
+
+    <form action="" method="get">
+
+        <div class="row mb-3">
+            <div class="col-sm-3"><label for="cname">Name</label></div>
+            <div class="col-sm-9"><input type="text" id="cname" name="name" class="form-control"></div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-sm-3"><label for="cmail">Email</label></div>
+            <div class="col-sm-9"><input type="email" id="cmail" name="email" class="form-control"></div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-sm-3"><label for="ctype">Topic</label></div>
+            <div class="col-sm-9">
+                <select id="ctype" name="topic" class="form-control">
+                    <option value="general">General</option>
+                    <option value="technical">Technical Problem</option>
+                    <option value="report">Report</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-sm-3"><label for="cmsg">Message</label></div>
+            <div class="col-sm-9">
+                <textarea id="cmsg" name="message" rows="5" class="form-control"></textarea>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-9">
+                <label><input type="checkbox" value="yes" name="newsletter"> Receive updates</label>
+            </div>
+        </div>
+
+        <input type="submit" value="Send Message" class="btn btn-danger">
+
+    </form>
+
+</div>
+
+</body>
+</html>
