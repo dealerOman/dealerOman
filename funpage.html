@@ -1,0 +1,292 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DealerOman - Fun page</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<!-- Navbar -->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="Logo.png" alt="DealerOman logo" width="60" height="60" class="me-2">
+                <span class="fw-bold">DealerOman</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#mainNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="categories.html">Categories</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="freelancers.html">Freelancers</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="questionnaire.html">Questionnaire</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="calculate.html">Calculator</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="funpage.html">Fun page</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About us</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact us</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="container my-4">
+
+    <h2 class="h4 mb-3 text-danger">DealerOman fun page</h2>
+
+    <p class="mb-3">
+        This page is just for fun. We use JavaScript to suggest a category and show
+        a small message based on your mood. The code uses simple if statements,
+        arrays, and DOM changes like in the course slides.
+    </p>
+
+    <!-- Result box -->
+    <div id="funResult" class="alert alert-info d-none">
+        <!-- We will write the suggestion here -->
+    </div>
+
+    <!-- Simple "Which category fits you today?" form -->
+    <form name="funForm" onsubmit="return showSuggestion()" class="bg-white p-4 rounded-3 border mb-4">
+
+        <!-- Favorite category (select) -->
+        <div class="row mb-3">
+            <div class="col-sm-3">
+                <label for="favCat">Favourite category</label>
+            </div>
+            <div class="col-sm-9">
+                <select id="favCat" name="favCat" class="form-control">
+                    <option value="">-- choose category --</option>
+                    <option value="vehicles">Vehicles</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="properties">Properties</option>
+                    <option value="pets">Pets</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Mood (radio) -->
+        <div class="row mb-3">
+            <div class="col-sm-3">
+                <span>Your mood today</span>
+            </div>
+            <div class="col-sm-9">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="mood" id="moodChill" value="relaxed">
+                    <label class="form-check-label" for="moodChill">Relaxed</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="mood" id="moodBusy" value="busy">
+                    <label class="form-check-label" for="moodBusy">Busy / in a hurry</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="mood" id="moodCurious" value="curious">
+                    <label class="form-check-label" for="moodCurious">Curious / want to explore</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Surprise checkbox -->
+        <div class="row mb-3">
+            <div class="col-sm-3">
+                <span>Surprise me</span>
+            </div>
+            <div class="col-sm-9">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="surprise" name="surprise" value="yes">
+                    <label class="form-check-label" for="surprise">
+                        Let the website choose a random category
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comment (optional) -->
+        <div class="row mb-3">
+            <div class="col-sm-3">
+                <label for="funComment">Small note</label>
+            </div>
+            <div class="col-sm-9">
+                <textarea id="funComment" name="funComment" rows="3" class="form-control"
+                          placeholder="Example: I love JDM cars, or I want to sell my laptop..."></textarea>
+            </div>
+        </div>
+
+        <!-- Button -->
+        <div class="text-end">
+            <input type="submit" value="Show suggestion" class="btn btn-danger">
+        </div>
+
+    </form>
+
+    <!-- Simple counter how many times user played -->
+    <p id="playCountText" class="text-muted">
+        You did not try the fun page yet.
+    </p>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-dark text-light text-center py-3 mt-4">
+    <div class="container">
+        <small>© 2025 DealerOman - Sultan Qaboos University project</small>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<script type="text/javascript">
+/*
+  We use a small counter to know how many times
+  the user clicked on "Show suggestion".
+*/
+var playCount = 0;
+
+/*
+  This function reads the form,
+  chooses a category (maybe random),
+  and writes a friendly message in the page.
+*/
+function showSuggestion() {
+    var f = document.forms["funForm"];
+
+    var favCat = f["favCat"].value;
+
+    // get selected mood
+    var mood = "";
+    var moodRadios = f["mood"];
+    var i;
+    for (i = 0; i < moodRadios.length; i++) {
+        if (moodRadios[i].checked) {
+            mood = moodRadios[i].value;
+        }
+    }
+
+    var surprise = f["surprise"].checked;
+    var comment = f["funComment"].value;
+
+    // simple validation: we want at least mood
+    if (mood == "") {
+        alert("Please select your mood.");
+        return false;
+    }
+
+    // if surprise is checked, we ignore favourite category and choose random
+    var finalCat = favCat;
+    if (surprise) {
+        var cats = new Array("vehicles", "electronics", "properties", "pets");
+        var index = Math.floor(Math.random() * cats.length); // random index
+        finalCat = cats[index];
+    }
+
+    // if still empty, show message
+    if (finalCat == "") {
+        alert("Please choose a category or tick surprise.");
+        return false;
+    }
+
+    // build suggestion based on category + mood
+    var suggestion = "";
+    var emoji = "";
+
+    // choose emoji per category (just for fun)
+    if (finalCat == "vehicles") {
+        emoji = "🚗";
+    } else if (finalCat == "electronics") {
+        emoji = "💻";
+    } else if (finalCat == "properties") {
+        emoji = "🏠";
+    } else if (finalCat == "pets") {
+        emoji = "🐶";
+    }
+
+    if (finalCat == "vehicles" && mood == "relaxed") {
+        suggestion = "Check some used cars and dream about your next weekend drive.";
+    } else if (finalCat == "vehicles" && mood == "busy") {
+        suggestion = "Search quickly for a car close to your area to save time.";
+    } else if (finalCat == "vehicles" && mood == "curious") {
+        suggestion = "Explore different brands and compare prices for fun.";
+    } else if (finalCat == "electronics" && mood == "relaxed") {
+        suggestion = "Look for a tablet or laptop that you can use for movies and gaming.";
+    } else if (finalCat == "electronics" && mood == "busy") {
+        suggestion = "Find a reliable laptop that can help with your university work.";
+    } else if (finalCat == "electronics" && mood == "curious") {
+        suggestion = "Browse random tech items and see what people are selling.";
+    } else if (finalCat == "properties" && mood == "relaxed") {
+        suggestion = "Check some villas or flats and imagine your future home.";
+    } else if (finalCat == "properties" && mood == "busy") {
+        suggestion = "Filter properties by city to find something practical.";
+    } else if (finalCat == "properties" && mood == "curious") {
+        suggestion = "Compare rents between different regions in Oman.";
+    } else if (finalCat == "pets" && mood == "relaxed") {
+        suggestion = "Scroll through cute pets and think which one fits your lifestyle.";
+    } else if (finalCat == "pets" && mood == "busy") {
+        suggestion = "Check low-maintenance pets that are easy to take care of.";
+    } else if (finalCat == "pets" && mood == "curious") {
+        suggestion = "Learn about different breeds and their personalities.";
+    } else {
+        // default message if something is not covered
+        suggestion = "Explore the " + finalCat + " category and see what you can find.";
+    }
+
+    // increase play count
+    playCount = playCount + 1;
+
+    // build final message
+    var msg = "Suggested category for you today: <strong>" + finalCat + "</strong> " + emoji + "<br>";
+    msg = msg + "Mood: " + mood + "<br>";
+    msg = msg + "Suggestion: " + suggestion + "<br>";
+    if (comment != "") {
+        msg = msg + "Your note: \"" + comment + "\"";
+    }
+
+    var resultDiv = document.getElementById("funResult");
+    resultDiv.className = "alert alert-info"; // show the box
+    resultDiv.innerHTML = msg;
+
+    // update play counter text
+    var countText = document.getElementById("playCountText");
+    countText.innerHTML = "You tried the fun page " + playCount + " time(s).";
+
+    // no real submit
+    return false;
+}
+</script>
+
+</body>
+</html>

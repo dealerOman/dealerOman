@@ -1,0 +1,278 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DealerOman - Questionnaire</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<!-- Navbar -->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="Logo.png" alt="DealerOman logo" width="60" height="60" class="me-2">
+                <span class="fw-bold">DealerOman</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#mainNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="categories.html">Categories</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="freelancers.html">Freelancers</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="questionnaire.html">Questionnaire</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="calculate.html">Calculator</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="funpage.html">Fun page</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About us</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact us</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="container my-4">
+
+    <h2 class="h4 mb-3 text-danger">DealerOman Questionnaire</h2>
+
+    <p class="mb-3">
+        This simple questionnaire is used to collect feedback about DealerOman.
+        We use different form elements (text, radio, checkbox, select, textarea) and JavaScript
+        validation as required in the project.
+    </p>
+
+    <!-- Result area (simple summary after submit) -->
+    <div id="resultBox" class="alert alert-info d-none">
+        <!-- We will write the summary here using JavaScript -->
+    </div>
+
+    <!-- Questionnaire form -->
+    <!-- we use onsubmit to call our JS function -->
+    <form name="questForm" onsubmit="return checkQuestionnaire()" class="bg-white p-4 rounded-3 border">
+
+        <!-- 1: Name (text) -->
+        <div class="row mb-3">
+            <div class="col-sm-3">
+                <label for="qname">Your name</label>
+            </div>
+            <div class="col-sm-9">
+                <input type="text" id="qname" name="qname" class="form-control">
+                <!-- note: we use JS validation instead of required here -->
+            </div>
+        </div>
+
+        <!-- 2: Age group (select) -->
+        <div class="row mb-3">
+            <div class="col-sm-3">
+                <label for="qage">Age group</label>
+            </div>
+            <div class="col-sm-9">
+                <select id="qage" name="qage" class="form-control">
+                    <option value="">-- select age group --</option>
+                    <option value="under18">Under 18</option>
+                    <option value="18-25">18 - 25</option>
+                    <option value="26-35">26 - 35</option>
+                    <option value="36plus">36 and above</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- 3: How did you hear about DealerOman (radio) -->
+        <div class="row mb-3">
+            <div class="col-sm-3">
+                <span>How did you know about DealerOman?</span>
+            </div>
+            <div class="col-sm-9">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="source" id="srcFriend" value="Friend">
+                    <label class="form-check-label" for="srcFriend">Friend / classmate</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="source" id="srcSocial" value="Social media">
+                    <label class="form-check-label" for="srcSocial">Social media</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="source" id="srcTeacher" value="Instructor">
+                    <label class="form-check-label" for="srcTeacher">Course instructor</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4: Rating (1 to 5) -->
+        <div class="row mb-3">
+            <div class="col-sm-3">
+                <span>Rate this website</span>
+            </div>
+            <div class="col-sm-9">
+                <span class="me-2">1 (low)</span>
+                <input type="radio" name="rating" value="1">
+                <input type="radio" name="rating" value="2">
+                <input type="radio" name="rating" value="3">
+                <input type="radio" name="rating" value="4">
+                <input type="radio" name="rating" value="5">
+                <span class="ms-2">5 (high)</span>
+            </div>
+        </div>
+
+        <!-- 5: Will you use it again? (checkbox) -->
+        <div class="row mb-3">
+            <div class="col-sm-3">
+                <span>Future use</span>
+            </div>
+            <div class="col-sm-9">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="qfuture" name="qfuture" value="yes">
+                    <label class="form-check-label" for="qfuture">
+                        I would use a website like DealerOman again
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6: Comments (textarea) -->
+        <div class="row mb-3">
+            <div class="col-sm-3">
+                <label for="qcomment">Comments</label>
+            </div>
+            <div class="col-sm-9">
+                <textarea id="qcomment" name="qcomment" rows="4" class="form-control"></textarea>
+            </div>
+        </div>
+
+        <!-- Submit button -->
+        <div class="text-end">
+            <input type="submit" value="Submit questionnaire" class="btn btn-danger">
+        </div>
+
+    </form>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-dark text-light text-center py-3 mt-4">
+    <div class="container">
+        <small>© 2025 DealerOman - Sultan Qaboos University project</small>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<script type="text/javascript">
+/*
+  This function checks the questionnaire form before submit.
+  We use simple if conditions and alerts, same as in the slides.
+*/
+function checkQuestionnaire() {
+    var f = document.forms["questForm"];
+
+    var name = f["qname"].value;
+    var age  = f["qage"].value;
+    var source = "";
+    var rating = "";
+    var i;
+
+    // get selected source (radio)
+    var srcRadios = f["source"];
+    for (i = 0; i < srcRadios.length; i++) {
+        if (srcRadios[i].checked) {
+            source = srcRadios[i].value;
+        }
+    }
+
+    // get selected rating (radio)
+    var rateRadios = f["rating"];
+    for (i = 0; i < rateRadios.length; i++) {
+        if (rateRadios[i].checked) {
+            rating = rateRadios[i].value;
+        }
+    }
+
+    // basic validation for three important fields
+    if (name == "") {
+        alert("Please enter your name.");
+        f["qname"].focus();
+        return false;
+    }
+
+    if (age == "") {
+        alert("Please select your age group.");
+        f["qage"].focus();
+        return false;
+    }
+
+    if (rating == "") {
+        alert("Please select a rating between 1 and 5.");
+        return false;
+    }
+
+    // build a small summary message
+    var future = "No";
+    if (f["qfuture"].checked) {
+        future = "Yes";
+    }
+
+    var comment = f["qcomment"].value;
+
+    var msg = "Thank you, " + name + "!\n";
+    msg = msg + "Age group: " + age + "\n";
+    msg = msg + "Rating: " + rating + "\n";
+    msg = msg + "Use again: " + future + "\n";
+    msg = msg + "Source: " + (source == "" ? "Not specified" : source);
+
+    // alert for the user
+    alert(msg);
+
+    // also write result in the page
+    var resultDiv = document.getElementById("resultBox");
+    resultDiv.className = "alert alert-info"; // show it
+    resultDiv.innerHTML =
+        "<strong>Summary:</strong><br>" +
+        "Name: " + name + "<br>" +
+        "Age group: " + age + "<br>" +
+        "Rating: " + rating + "<br>" +
+        "Use again: " + future + "<br>" +
+        "Source: " + (source == "" ? "Not specified" : source) + "<br>" +
+        "Comments: " + (comment == "" ? "No comments" : comment);
+
+    // we return false so the form is not actually submitted to a server
+    return false;
+}
+</script>
+
+</body>
+</html>
