@@ -1,15 +1,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>DealerOman - Categories</title>
+    <title>DealerOman - Contact</title>
 
-    <!-- Bootstrap-->
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
           rel="stylesheet">
 </head>
-<body class="bg-light" onload="showCars()">
+<body class="bg-light">
 
-<!-- Navbar  -->
+<!-- Header + Navbar -->
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -32,7 +32,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="categories.html">Categories</a>
+                        <a class="nav-link" href="categories.html">Categories</a>
                     </li>
 
                     <li class="nav-item">
@@ -56,7 +56,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact us</a>
+                        <a class="nav-link active" href="contact.html">Contact us</a>
                     </li>
 
                 </ul>
@@ -65,204 +65,150 @@
     </nav>
 </header>
 
+<!-- Main Content -->
 <main class="container my-4">
 
-    <h2 class="h4 mb-3">Vehicles listings (dynamic table)</h2>
+    <h2 class="h4 mb-3 text-danger">Contact the DealerOman team</h2>
+
     <p class="mb-3">
-        This table is filled from a JavaScript array using object constructor and functions.
+        You can send us a message using this form or email us directly at one of the addresses below.
     </p>
 
-    <!-- Empty HTML table and will be filled using Javascript -->
+    <!-- Collapse (interactive component #2) -->
+    <button class="btn btn-outline-secondary mb-3" type="button"
+            data-bs-toggle="collapse" data-bs-target="#contactInfo"
+            aria-expanded="false" aria-controls="contactInfo">
+        Show project info
+    </button>
+
+    <div class="collapse mb-4" id="contactInfo">
+        <div class="card card-body">
+            DealerOman is a COMP3700 student project. We use this page to simulate how users
+            can contact a simple support team about listings or technical problems.
+        </div>
+    </div>
+
+    <!-- Contact Table -->
     <div class="table-responsive mb-4">
-        <table class="table table-bordered table-striped" id="carsTable">
+        <table class="table table-bordered table-striped table-hover">
             <tr>
-                <th>Brand</th>
-                <th>Model</th>
-                <th>Year</th>
-                <th>Price (OMR)</th>
-                <th>City</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+            <tr>
+                <td>Talal Al-Tobi</td>
+                <td>
+                    <a href="mailto:s144063@student.squ.edu.om">
+                        s144063@student.squ.edu.om
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Abdulaziz Al-Hatmi</td>
+                <td>
+                    <a href="mailto:s144003@student.squ.edu.om">
+                        s144003@student.squ.edu.om
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Osama Al-Riyami</td>
+                <td>
+                    <a href="mailto:s143831@student.squ.edu.om">
+                        s143831@student.squ.edu.om
+                    </a>
+                </td>
             </tr>
         </table>
     </div>
 
-    <!-- Adding Cars form -->
-    <h3 class="h5 mb-2">Add new car</h3>
-    <form name="addCarForm" onsubmit="return addCar()" class="was-validated mb-4">
+    <!-- Contact Form with basic Bootstrap validation -->
+    <form action="" method="get" class="bg-white p-4 rounded-3 border was-validated">
 
-        <div class="row mb-2">
+        <div class="row mb-3">
             <div class="col-sm-3">
-                <label for="brand">Brand</label>
+                <label for="cname">Name</label>
             </div>
             <div class="col-sm-9">
-                <input type="text" id="brand" name="brand" class="form-control" required>
-                <div class="invalid-feedback">Please enter the brand.</div>
+                <input type="text" id="cname" name="name" class="form-control" required>
+                <div class="invalid-feedback">
+                    Please enter your name.
+                </div>
             </div>
         </div>
 
-        <div class="row mb-2">
+        <div class="row mb-3">
             <div class="col-sm-3">
-                <label for="model">Model</label>
+                <label for="cmail">Email</label>
             </div>
             <div class="col-sm-9">
-                <input type="text" id="model" name="model" class="form-control" required>
-                <div class="invalid-feedback">Please enter the model.</div>
+                <input type="email" id="cmail" name="email" class="form-control" required>
+                <div class="invalid-feedback">
+                    Please enter a valid email address.
+                </div>
             </div>
         </div>
 
-        <div class="row mb-2">
+        <div class="row mb-3">
             <div class="col-sm-3">
-                <label for="year">Year</label>
+                <label for="ctype">Topic</label>
             </div>
             <div class="col-sm-9">
-                <input type="number" id="year" name="year" class="form-control" required>
-                <div class="invalid-feedback">Please enter the year.</div>
-            </div>
-        </div>
-
-        <div class="row mb-2">
-            <div class="col-sm-3">
-                <label for="price">Price (OMR)</label>
-            </div>
-            <div class="col-sm-9">
-                <input type="number" id="price" name="price" class="form-control" required>
-                <div class="invalid-feedback">Please enter the price.</div>
-            </div>
-        </div>
-
-        <div class="row mb-2">
-            <div class="col-sm-3">
-                <label for="city">City</label>
-            </div>
-            <div class="col-sm-9">
-                <select id="city" name="city" class="form-control" required>
-                    <option value="">-- select city --</option>
-                    <option>Muscat</option>
-                    <option>Sohar</option>
-                    <option>Nizwa</option>
-                    <option>Salalah</option>
+                <select id="ctype" name="topic" class="form-control" required>
+                    <option value="">-- Select topic --</option>
+                    <option value="general">General</option>
+                    <option value="technical">Technical Problem</option>
+                    <option value="report">Report</option>
                 </select>
-                <div class="invalid-feedback">Please select a city.</div>
+                <div class="invalid-feedback">
+                    Please choose a topic.
+                </div>
             </div>
         </div>
 
-        <input type="submit" value="Add Car" class="btn btn-danger">
-    </form>
+        <div class="row mb-3">
+            <div class="col-sm-3">
+                <label for="cmsg">Message</label>
+            </div>
+            <div class="col-sm-9">
+                <textarea id="cmsg" name="message"
+                          rows="5" class="form-control" required></textarea>
+                <div class="invalid-feedback">
+                    Please write your message.
+                </div>
+            </div>
+        </div>
 
-    <!-- بحث بسيط -->
-    <h3 class="h5 mb-2">Search cars by city</h3>
-    <div class="row mb-3">
-        <div class="col-sm-6">
-            <input type="text" id="carSearch" class="form-control"
-                   placeholder="Type city name e.g. Muscat">
+        <div class="row mb-3">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-9">
+                <div class="form-check">
+                    <input type="checkbox" value="yes" name="newsletter"
+                           id="newsletter" class="form-check-input">
+                    <label for="newsletter" class="form-check-label">
+                        Receive updates
+                    </label>
+                </div>
+            </div>
         </div>
-        <div class="col-sm-3">
-            <input type="button" value="Search" class="btn btn-secondary"
-                   onclick="searchCars()">
+
+        <div class="text-end">
+            <input type="submit" value="Send Message" class="btn btn-danger">
         </div>
-        <div class="col-sm-3">
-            <input type="button" value="Show all" class="btn btn-outline-secondary"
-                   onclick="showCars()">
-        </div>
-    </div>
+
+    </form>
 
 </main>
 
-<footer class="bg-dark text-light text-center py-2 mt-4">
-    <small>© 2025 DealerOman - Sultan Qaboos University project</small>
+<!-- Footer -->
+<footer class="bg-dark text-light text-center py-3 mt-4">
+    <div class="container">
+        <small>© 2025 DealerOman - Sultan Qaboos University project</small>
+    </div>
 </footer>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
-<script type="text/javascript">
-/*
-  object constructor للسيارات
-  نستخدمه لتخزين بيانات الإعلان في كائن واحد
-*/
-function CarAd(brand, model, year, price, city) {
-    this.brand = brand;
-    this.model = model;
-    this.year  = year;
-    this.price = price;
-    this.city  = city;
-}
-
-/*
-  مصفوفة تخزن مجموعة من الإعلانات
-  القيم مأخوذة من أمثلة قريبة لموقعنا
-*/
-var carAds = new Array(
-    new CarAd("Toyota", "Camry", 2020, 5200, "Muscat"),
-    new CarAd("Nissan", "Altima", 2019, 4500, "Nizwa"),
-    new CarAd("Hyundai", "Elantra", 2021, 4800, "Sohar")
-);
-
-/*
-  هذه الدالة تعرض محتويات المصفوفة في الجدول
-  نستخدم حلقة for لإضافة الصفوف
-*/
-function showCars() {
-    var table = document.getElementById("carsTable");
-    table.innerHTML =
-        "<tr><th>Brand</th><th>Model</th><th>Year</th><th>Price (OMR)</th><th>City</th></tr>";
-
-    var i;
-    for (i = 0; i < carAds.length; i++) {
-        table.innerHTML += "<tr>" +
-            "<td>" + carAds[i].brand + "</td>" +
-            "<td>" + carAds[i].model + "</td>" +
-            "<td>" + carAds[i].year  + "</td>" +
-            "<td>" + carAds[i].price + "</td>" +
-            "<td>" + carAds[i].city  + "</td>" +
-            "</tr>";
-    }
-}
-
-/*a Function when you want to add a car*/
-function addCar() {
-    var f = document.forms["addCarForm"];
-    var b = f["brand"].value;
-    var m = f["model"].value;
-    var y = f["year"].value;
-    var p = f["price"].value;
-    var c = f["city"].value;
-
-    if (b == "" || m == "" || y == "" || p == "" || c == "") {
-        alert("Please fill all car fields");
-        return false;
-    }
-
-    carAds.push(new CarAd(b, m, y, p, c));
-    showCars(); // Show the table
-    return false; 
-}
-
-/* Search function by the city*/
-function searchCars() {
-    var text = document.getElementById("carSearch").value;
-    var table = document.getElementById("carsTable");
-    table.innerHTML =
-        "<tr><th>Brand</th><th>Model</th><th>Year</th><th>Price (OMR)</th><th>City</th></tr>";
-
-    var i;
-    var found = false;
-    for (i = 0; i < carAds.length; i++) {
-        if (carAds[i].city.toLowerCase() == text.toLowerCase()) {
-            table.innerHTML += "<tr>" +
-                "<td>" + carAds[i].brand + "</td>" +
-                "<td>" + carAds[i].model + "</td>" +
-                "<td>" + carAds[i].year  + "</td>" +
-                "<td>" + carAds[i].price + "</td>" +
-                "<td>" + carAds[i].city  + "</td>" +
-                "</tr>";
-            found = true;
-        }
-    }
-    if (!found) {
-        alert("No cars found in this city");
-    }
-}
-</script>
-
 </body>
 </html>
+
