@@ -1,114 +1,183 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>DealerOman - Home</title>
-    <!--Bootstrap-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-        rel="stylesheet">
-    <!--External css file-->
-    <link rel="stylesheet" href="style.css">
+    <title>DealerOman - About</title>
 
-    <!--Enternal CSS-->
-     <style>
-        .about-box {
-            background-color: #ffffff;
-            border: 1px solid #cccccc;
-            padding: 15px;
-            margin-bottom: 20px;
-        }
-        .about-title {
-            text-align: center;
-            color: #e53935;
-            margin-top: 20px;
-        }
-    </style>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet">
 </head>
-<body>
-<!--the header and navigation bar-->
+<body class="bg-light">
+
+<!-- Header + Navbar -->
 <header>
-    <div class="container-fluid bg-dark text-white">
-        <div class="row">
-            <div class="col-sm-3">
-                <img src="Logo.png" alt="DealerOman logo" width="120" height="120">
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html" >Home</a></li>
-                    <li><a href="categories.html" >Categories</a></li>
-                    <li><a href="freelancers.html" >Freelancers</a></li>
-                    <li><a href="about.html" class="active">About us</a></li>
-                    <li><a href="contact.html">Contact us</a></li>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="Logo.png" alt="DealerOman logo" width="60" height="60" class="me-2">
+                <span class="fw-bold">DealerOman</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#mainNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="categories.html">Categories</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="freelancers.html">Freelancers</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="questionnaire.html">Questionnaire</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="calculate.html">Calculator</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="funpage.html">Fun page</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html">About us</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact us</a>
+                    </li>
+
                 </ul>
-            </nav>
+            </div>
         </div>
-    </div>
+    </nav>
 </header>
 
-<div class="container main-content">
-    <h2 class="about-title">About DealerOman</h2>
-    <div class="about-box">
-        <p>DealerOman is a student project for COMP3700 - Introduction to Web Computing.</p>
-        <p>The website simulates a simple online marketplace for cars, electronics,
-            pets, properties, and freelancer services.</p>
+<!-- Main content -->
+<main class="container my-4">
+
+    <h2 class="h4 text-center mb-4 text-danger">About DealerOman</h2>
+
+    <!-- Simple about text -->
+    <div class="bg-white border rounded-3 p-3 mb-3">
+        <p class="mb-2">
+            DealerOman is a student project for COMP3700 - Introduction to Web Computing.
+        </p>
+        <p class="mb-0">
+            The website simulates a simple online marketplace for cars, electronics,
+            pets, properties, and freelancer services inside Oman.
+        </p>
     </div>
 
-    <div class="about-box">
-        <h3>Project Goals</h3>
-        <ul class="custom-list">
-            <li>Practice HTML, CSS, and Bootstrap.</li>
-            <li>Use forms and tables as required in the project instructions.</li>
-            <li>Create a multi-page website using basic web technologies.</li>
+    <!-- Project goals -->
+    <div class="bg-white border rounded-3 p-3 mb-3">
+        <h3 class="h5 mb-3">Project goals</h3>
+        <ul class="mb-0">
+            <li>Practice HTML, Bootstrap, and basic JavaScript from the course slides.</li>
+            <li>Use forms, tables, and JavaScript arrays as required in the project instructions.</li>
+            <li>Create a small multi-page website using simple web technologies.</li>
         </ul>
     </div>
 
-     <div class="about-box">
-        <h3>Website Structure</h3>
+    <!-- Website structure table -->
+    <div class="bg-white border rounded-3 p-3 mb-3">
+        <h3 class="h5 mb-3">Website structure</h3>
 
-        <div class="table-box">
-            <table>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover mb-0">
                 <tr>
-                    <th>Page</th><th>File</th><th>Description</th></tr>
-
+                    <th>Page</th>
+                    <th>File</th>
+                    <th>Description</th>
+                </tr>
                 <tr>
-                    <td>Home</td><td>index.html</td><td>Main categories and search bar.</td></tr>
-
+                    <td>Home</td>
+                    <td>index.html</td>
+                    <td>Main page with categories, search bar, and carousel.</td>
+                </tr>
                 <tr>
-                    <td>Categories</td><td>categories.html</td><td>Listing cards + submit listing form.</td></tr>
-
+                    <td>Categories</td>
+                    <td>categories.html</td>
+                    <td>Dynamic car listings and form to add new cars.</td>
+                </tr>
                 <tr>
-                    <td>Freelancers</td><td>freelancers.html</td><td>Freelancer table + registration form.</td></tr>
-
+                    <td>Freelancers</td>
+                    <td>freelancers.html</td>
+                    <td>Dynamic freelancer table and registration form.</td>
+                </tr>
                 <tr>
-                    <td>About</td><td>about.html</td><td>Information about the project.</td></tr>
-
+                    <td>Questionnaire</td>
+                    <td>questionnaire.html</td>
+                    <td>Simple feedback form about the website.</td>
+                </tr>
                 <tr>
-                    <td>Contact</td><td>contact.html</td><td>Contact form + email link.</td></tr>
+                    <td>Calculator</td>
+                    <td>calculate.html</td>
+                    <td>Simple price calculator using JavaScript.</td>
+                </tr>
+                <tr>
+                    <td>Fun page</td>
+                    <td>funpage.html</td>
+                    <td>Small interaction related to cars and ads.</td>
+                </tr>
+                <tr>
+                    <td>About</td>
+                    <td>about.html</td>
+                    <td>Information about the project and group members.</td>
+                </tr>
+                <tr>
+                    <td>Contact</td>
+                    <td>contact.html</td>
+                    <td>Contact form and email links for the team.</td>
+                </tr>
             </table>
         </div>
     </div>
-</div>
 
-<div class="container">
-<p>You can send us a message using this form or email us directly at one of the following emails:</p>
+    <!-- Contact emails -->
+    <div class="bg-white border rounded-3 p-3">
+        <p class="mb-2">
+            You can send us a message using the contact form or email us directly at one of the following emails:
+        </p>
 
-<p>Talal Al-Tobi ➡️ 
-    <a href="mailto:s144063@student.squ.edu.om">s144063@student.squ.edu.om</a>
-</p>
+        <p class="mb-1">
+            Talal Al-Tobi ➡️
+            <a href="mailto:s144063@student.squ.edu.om">s144063@student.squ.edu.om</a>
+        </p>
 
-<p>Abdulaziz Al-Hatmi ➡️ 
-    <a href="mailto:s144003@student.squ.edu.om">s144003@student.squ.edu.om</a>
-</p>
+        <p class="mb-1">
+            Abdulaziz Al-Hatmi ➡️
+            <a href="mailto:s144003@student.squ.edu.om">s144003@student.squ.edu.om</a>
+        </p>
 
-<p>Osama Al-Riyami ➡️ 
-    <a href="mailto:s143831@student.squ.edu.om">s143831@student.squ.edu.om</a>
-</p>
-</div>
+        <p class="mb-0">
+            Osama Al-Riyami ➡️
+            <a href="mailto:s143831@student.squ.edu.om">s143831@student.squ.edu.om</a>
+        </p>
+    </div>
 
-<footer class="bg-dark text-white mt-3">
+</main>
+
+<!-- Footer -->
+<footer class="bg-dark text-light text-center py-3 mt-4">
     <div class="container">
-        <p id="footer-text" class="center-text">© 2025 DealerOman - Sultan Qaboos University project</p>
+        <small>© 2025 DealerOman - Sultan Qaboos University project</small>
     </div>
 </footer>
 
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
