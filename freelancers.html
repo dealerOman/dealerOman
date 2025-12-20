@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +8,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
           rel="stylesheet">
 </head>
+
+<!-- NOTE: keep onload to show the sample table (Part 3 style),
+     but the FORM submission now goes to PHP (Part 4 requirement). -->
 <body class="bg-light" onload="showFreelancers()">
 
 <!-- Navbar -->
@@ -27,37 +31,14 @@
             <div class="collapse navbar-collapse" id="mainNavbar">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="categories.html">Categories</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link active" href="freelancers.html">Freelancers</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="questionnaire.html">Questionnaire</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="calculate.html">Calculator</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="funpage.html">Fun page</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">About us</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact us</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="categories.html">Categories</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="freelancers.html">Freelancers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="questionnaire.html">Questionnaire</a></li>
+                    <li class="nav-item"><a class="nav-link" href="calculate.html">Calculator</a></li>
+                    <li class="nav-item"><a class="nav-link" href="funpage.html">Fun page</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact us</a></li>
 
                 </ul>
             </div>
@@ -69,7 +50,7 @@
 
     <h2 class="h4 mb-3">Featured Freelancers (dynamic table)</h2>
     <p class="mb-3">
-        This table is filled from a JavaScript array of Freelancer objects.
+        This table is filled from a JavaScript array of Freelancer objects (Part 3).
     </p>
 
     <!-- Freelancers table -->
@@ -85,71 +66,80 @@
         </table>
     </div>
 
-    <!-- FreeLancers form -->
+    <!-- Freelancer form -->
     <h3 class="h5 mb-2">Freelancer registration</h3>
 
-    <form name="addFreeForm" onsubmit="return addFreelancer()" class="was-validated mb-4">
+    <!-- NOTE: Part 4 requires: form must send data to PHP page only (action to PHP).
+         Week 10 shows method="post" and PHP reads using $_POST["..."] -->
+    <form name="addFreeForm"
+          action="php/freelancer_insert.php"
+          method="post"
+          onsubmit="return validateFreelancerForm();"
+          class="bg-white p-4 rounded-3 border mb-4">
 
         <div class="row mb-2">
             <div class="col-sm-3"><label for="fname">Full Name</label></div>
             <div class="col-sm-9">
-                <input type="text" id="fname" name="full_name" class="form-control" required>
-                <div class="invalid-feedback">Please enter your full name.</div>
+                <input type="text" id="fname" name="full_name" class="form-control">
+                <div id="errFName" class="text-danger small"></div>
             </div>
         </div>
 
         <div class="row mb-2">
             <div class="col-sm-3"><label for="fmail">Email</label></div>
             <div class="col-sm-9">
-                <input type="email" id="fmail" name="email" class="form-control" required>
-                <div class="invalid-feedback">Please enter a valid email.</div>
+                <input type="text" id="fmail" name="email" class="form-control">
+                <div id="errFEmail" class="text-danger small"></div>
             </div>
         </div>
 
         <div class="row mb-2">
             <div class="col-sm-3"><label for="phone">Mobile Number</label></div>
             <div class="col-sm-9">
-                <input type="tel" id="phone" name="mobile" class="form-control" required>
-                <div class="invalid-feedback">Please enter your mobile number.</div>
+                <input type="text" id="phone" name="mobile" class="form-control">
+                <div id="errFMobile" class="text-danger small"></div>
             </div>
         </div>
 
         <div class="row mb-2">
             <div class="col-sm-3"><label for="skill">Skill</label></div>
             <div class="col-sm-9">
-                <select id="skill" name="skill" class="form-control" required>
+                <select id="skill" name="skill" class="form-control">
                     <option value="">-- select skill --</option>
-                    <option value="design">Graphic Design</option>
-                    <option value="marketing">Digital Marketing</option>
-                    <option value="carcare">Car Care</option>
-                    <option value="photography">Photography</option>
+                    <option value="Graphic Design">Graphic Design</option>
+                    <option value="Digital Marketing">Digital Marketing</option>
+                    <option value="Car Care">Car Care</option>
+                    <option value="Photography">Photography</option>
                 </select>
-                <div class="invalid-feedback">Please select a skill.</div>
+                <div id="errFSkill" class="text-danger small"></div>
             </div>
         </div>
 
         <div class="row mb-2">
             <div class="col-sm-3"><label for="frate">Rate (OMR/hr)</label></div>
             <div class="col-sm-9">
-                <input type="number" id="frate" name="rate" class="form-control" required>
-                <div class="invalid-feedback">Please enter your rate.</div>
+                <input type="text" id="frate" name="rate" class="form-control">
+                <div id="errFRate" class="text-danger small"></div>
             </div>
         </div>
 
-        <div class="row mb-2">
+        <div class="row mb-3">
             <div class="col-sm-3"><label for="fcity">City</label></div>
             <div class="col-sm-9">
-                <input type="text" id="fcity" name="city" class="form-control" required>
-                <div class="invalid-feedback">Please enter city.</div>
+                <input type="text" id="fcity" name="city" class="form-control">
+                <div id="errFCity" class="text-danger small"></div>
             </div>
         </div>
 
-        <input type="submit" value="Submit Freelancer" class="btn btn-danger">
+        <div class="text-end">
+            <input type="submit" value="Submit Freelancer" class="btn btn-danger">
+        </div>
 
     </form>
 
-    <!-- بحث فريلانسر -->
-    <h3 class="h5 mb-2">Search freelancers by skill</h3>
+    <!-- NOTE: For Part 4, searching DB will be done using a PHP page (SELECT query).
+         This old JS search is okay to keep for Part 3 demo, but Part 4 search must be PHP. -->
+    <h3 class="h5 mb-2">Search freelancers by skill (Part 3 demo)</h3>
     <div class="row mb-3">
         <div class="col-sm-6">
             <input type="text" id="freeSearch" class="form-control"
@@ -176,7 +166,7 @@
 
 <script type="text/javascript">
 /*
-  Freelancers function and what it must content of elements
+  NOTE: JavaScript object (Part 3).
 */
 function Freelancer(name, skill, rate, city, mobile) {
     this.name   = name;
@@ -187,16 +177,16 @@ function Freelancer(name, skill, rate, city, mobile) {
 }
 
 /*
-  sample freelancers array
+  NOTE: sample freelancers array (Part 3 demo).
 */
 var freelancers = new Array(
-    new Freelancer("Ahmed Ali", "Car Wash", 4, "Muscat", "91234567"),
+    new Freelancer("Ahmed Ali", "Car Care", 4, "Muscat", "91234567"),
     new Freelancer("Sara Al-Harthy", "Graphic Design", 6, "Seeb", "92345678"),
     new Freelancer("Omar Al-Rawahi", "Photography", 5, "Bahla", "93456789")
 );
 
 /*
-  add freelancers info to the tab;e
+  NOTE: display freelancers in the table (Part 3).
 */
 function showFreelancers() {
     var table = document.getElementById("freeTable");
@@ -216,27 +206,96 @@ function showFreelancers() {
 }
 
 /*
-Addin a new freelancer to the form */
-function addFreelancer() {
-    var f = document.forms["addFreeForm"];
-    var n = f["full_name"].value;
-    var e = f["email"].value;
-    var m = f["mobile"].value;
-    var s = f["skill"].value;
-    var r = f["rate"].value;
-    var c = f["city"].value;
+  NOTE: Part 4 requirement:
+  - Validate this form using JavaScript function BEFORE submission.
+  - Show errors near fields using XHTML elements (divs).
+*/
+function validateFreelancerForm() {
 
-    if (n == "" || e == "" || m == "" || s == "" || r == "" || c == "") {
-        alert("Please fill all freelancer fields");
+    // NOTE: clear old errors
+    document.getElementById("errFName").innerHTML = "";
+    document.getElementById("errFEmail").innerHTML = "";
+    document.getElementById("errFMobile").innerHTML = "";
+    document.getElementById("errFSkill").innerHTML = "";
+    document.getElementById("errFRate").innerHTML = "";
+    document.getElementById("errFCity").innerHTML = "";
+
+    var ok = true;
+
+    var n = document.getElementById("fname").value;
+    var e = document.getElementById("fmail").value;
+    var m = document.getElementById("phone").value;
+    var s = document.getElementById("skill").value;
+    var r = document.getElementById("frate").value;
+    var c = document.getElementById("fcity").value;
+
+    // NOTE: Required + length check for name
+    if (n == "") {
+        document.getElementById("errFName").innerHTML = "Please enter your full name.";
+        ok = false;
+    } else if (n.length < 3) {
+        document.getElementById("errFName").innerHTML = "Name must be at least 3 characters.";
+        ok = false;
+    }
+
+    // NOTE: Email regex check (simple)
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (e == "") {
+        document.getElementById("errFEmail").innerHTML = "Please enter your email.";
+        ok = false;
+    } else if (emailPattern.test(e) == false) {
+        document.getElementById("errFEmail").innerHTML = "Email format is not correct.";
+        ok = false;
+    }
+
+    // NOTE: Mobile must be 8 digits (regex)
+    var phonePattern = /^\d{8}$/;
+    if (m == "") {
+        document.getElementById("errFMobile").innerHTML = "Please enter your mobile number.";
+        ok = false;
+    } else if (phonePattern.test(m) == false) {
+        document.getElementById("errFMobile").innerHTML = "Mobile must be exactly 8 digits.";
+        ok = false;
+    }
+
+    // NOTE: Skill must be selected
+    if (s == "") {
+        document.getElementById("errFSkill").innerHTML = "Please select a skill.";
+        ok = false;
+    }
+
+    // NOTE: Rate required + range validation (example: 1 to 100)
+    if (r == "") {
+        document.getElementById("errFRate").innerHTML = "Please enter your rate.";
+        ok = false;
+    } else if (isNaN(r)) {
+        document.getElementById("errFRate").innerHTML = "Rate must be a number.";
+        ok = false;
+    } else if (Number(r) < 1 || Number(r) > 100) {
+        document.getElementById("errFRate").innerHTML = "Rate must be between 1 and 100.";
+        ok = false;
+    }
+
+    // NOTE: City required
+    if (c == "") {
+        document.getElementById("errFCity").innerHTML = "Please enter your city.";
+        ok = false;
+    } else if (c.length < 2) {
+        document.getElementById("errFCity").innerHTML = "City must be at least 2 characters.";
+        ok = false;
+    }
+
+    // NOTE: If not ok, stop submit (do not go to PHP)
+    if (ok == false) {
         return false;
     }
 
-    freelancers.push(new Freelancer(n, s, r, c, m));
-    showFreelancers();
-    return false;
+    return true; // allow submit to PHP
 }
 
-/*Search based on skill */
+/*
+  NOTE: Part 3 demo search (JavaScript).
+*/
 function searchFreelancers() {
     var text = document.getElementById("freeSearch").value;
     var table = document.getElementById("freeTable");
@@ -245,6 +304,7 @@ function searchFreelancers() {
 
     var i;
     var found = false;
+
     for (i = 0; i < freelancers.length; i++) {
         if (freelancers[i].skill.toLowerCase() == text.toLowerCase()) {
             table.innerHTML += "<tr>" +
@@ -257,6 +317,7 @@ function searchFreelancers() {
             found = true;
         }
     }
+
     if (!found) {
         alert("No freelancers found with this skill");
     }
@@ -265,3 +326,4 @@ function searchFreelancers() {
 
 </body>
 </html>
+
