@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -27,37 +28,14 @@
             <div class="collapse navbar-collapse" id="mainNavbar">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="categories.html">Categories</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="freelancers.html">Freelancers</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="questionnaire.html">Questionnaire</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="calculate.html">Calculator</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="funpage.html">Fun page</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">About us</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link active" href="contact.html">Contact us</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="categories.html">Categories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="freelancers.html">Freelancers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="questionnaire.html">Questionnaire</a></li>
+                    <li class="nav-item"><a class="nav-link" href="calculate.html">Calculator</a></li>
+                    <li class="nav-item"><a class="nav-link" href="funpage.html">Fun page</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About us</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contact.html">Contact us</a></li>
 
                 </ul>
             </div>
@@ -74,7 +52,7 @@
         You can send us a message using this form or email us directly at one of the addresses below.
     </p>
 
-    <!-- Collapse (interactive component #2) -->
+    <!-- Collapse -->
     <button class="btn btn-outline-secondary mb-3" type="button"
             data-bs-toggle="collapse" data-bs-target="#contactInfo"
             aria-expanded="false" aria-controls="contactInfo">
@@ -91,49 +69,35 @@
     <!-- Contact Table -->
     <div class="table-responsive mb-4">
         <table class="table table-bordered table-striped table-hover">
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-            </tr>
+            <tr><th>Name</th><th>Email</th></tr>
             <tr>
                 <td>Talal Al-Tobi</td>
-                <td>
-                    <a href="mailto:s144063@student.squ.edu.om">
-                        s144063@student.squ.edu.om
-                    </a>
-                </td>
+                <td><a href="mailto:s144063@student.squ.edu.om">s144063@student.squ.edu.om</a></td>
             </tr>
             <tr>
                 <td>Abdulaziz Al-Hatmi</td>
-                <td>
-                    <a href="mailto:s144003@student.squ.edu.om">
-                        s144003@student.squ.edu.om
-                    </a>
-                </td>
+                <td><a href="mailto:s144003@student.squ.edu.om">s144003@student.squ.edu.om</a></td>
             </tr>
             <tr>
                 <td>Osama Al-Riyami</td>
-                <td>
-                    <a href="mailto:s143831@student.squ.edu.om">
-                        s143831@student.squ.edu.om
-                    </a>
-                </td>
+                <td><a href="mailto:s143831@student.squ.edu.om">s143831@student.squ.edu.om</a></td>
             </tr>
         </table>
     </div>
 
-    <!-- Contact Form with basic Bootstrap validation -->
-    <form action="" method="get" class="bg-white p-4 rounded-3 border was-validated">
+    <!--send form to PHP + JS validation -->
+    <form action="php/contact_process.php" method="post"
+          class="bg-white p-4 rounded-3 border"
+          onsubmit="return validateContactForm();">
 
         <div class="row mb-3">
             <div class="col-sm-3">
                 <label for="cname">Name</label>
             </div>
             <div class="col-sm-9">
-                <input type="text" id="cname" name="name" class="form-control" required>
-                <div class="invalid-feedback">
-                    Please enter your name.
-                </div>
+                <input type="text" id="cname" name="name" class="form-control">
+                <!-- NOTE: error message will appear here -->
+                <div id="errName" class="text-danger small"></div>
             </div>
         </div>
 
@@ -142,10 +106,8 @@
                 <label for="cmail">Email</label>
             </div>
             <div class="col-sm-9">
-                <input type="email" id="cmail" name="email" class="form-control" required>
-                <div class="invalid-feedback">
-                    Please enter a valid email address.
-                </div>
+                <input type="text" id="cmail" name="email" class="form-control">
+                <div id="errEmail" class="text-danger small"></div>
             </div>
         </div>
 
@@ -154,15 +116,13 @@
                 <label for="ctype">Topic</label>
             </div>
             <div class="col-sm-9">
-                <select id="ctype" name="topic" class="form-control" required>
+                <select id="ctype" name="topic" class="form-control">
                     <option value="">-- Select topic --</option>
                     <option value="general">General</option>
                     <option value="technical">Technical Problem</option>
                     <option value="report">Report</option>
                 </select>
-                <div class="invalid-feedback">
-                    Please choose a topic.
-                </div>
+                <div id="errTopic" class="text-danger small"></div>
             </div>
         </div>
 
@@ -171,11 +131,8 @@
                 <label for="cmsg">Message</label>
             </div>
             <div class="col-sm-9">
-                <textarea id="cmsg" name="message"
-                          rows="5" class="form-control" required></textarea>
-                <div class="invalid-feedback">
-                    Please write your message.
-                </div>
+                <textarea id="cmsg" name="message" rows="5" class="form-control"></textarea>
+                <div id="errMsg" class="text-danger small"></div>
             </div>
         </div>
 
@@ -209,5 +166,71 @@
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<script type="text/javascript">
+/*
+  NOTE: Part 4 requires JavaScript validation for forms.
+  Here we validate: name, email, topic, and message.
+  We show errors beside each field (not only alert).
+*/
+function validateContactForm() {
+
+    // NOTE: clear old error messages
+    document.getElementById("errName").innerHTML = "";
+    document.getElementById("errEmail").innerHTML = "";
+    document.getElementById("errTopic").innerHTML = "";
+    document.getElementById("errMsg").innerHTML = "";
+
+    var ok = true;
+
+    var name = document.getElementById("cname").value;
+    var email = document.getElementById("cmail").value;
+    var topic = document.getElementById("ctype").value;
+    var msg = document.getElementById("cmsg").value;
+
+    // NOTE: name validation
+    if (name == "") {
+        document.getElementById("errName").innerHTML = "Please enter your name.";
+        ok = false;
+    } else if (name.length < 3) {
+        document.getElementById("errName").innerHTML = "Name must be at least 3 characters.";
+        ok = false;
+    }
+
+    // NOTE: email validation (simple regex)
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email == "") {
+        document.getElementById("errEmail").innerHTML = "Please enter your email.";
+        ok = false;
+    } else if (emailPattern.test(email) == false) {
+        document.getElementById("errEmail").innerHTML = "Email format is not correct.";
+        ok = false;
+    }
+
+    // NOTE: topic validation
+    if (topic == "") {
+        document.getElementById("errTopic").innerHTML = "Please choose a topic.";
+        ok = false;
+    }
+
+    // NOTE: message validation
+    if (msg == "") {
+        document.getElementById("errMsg").innerHTML = "Please write your message.";
+        ok = false;
+    } else if (msg.length < 10) {
+        document.getElementById("errMsg").innerHTML = "Message must be at least 10 characters.";
+        ok = false;
+    }
+
+    // NOTE: if not ok, stop submit
+    if (ok == false) {
+        return false;
+    }
+
+    return true; // allow submit to PHP
+}
+</script>
+
 </body>
 </html>
+
